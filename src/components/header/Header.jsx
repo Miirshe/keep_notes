@@ -1,10 +1,9 @@
 import logo from '../../assets/logo.png';
 import avator from '../../assets/avator.png';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 const Header = () => {
   const [ show , setShow ] = useState(false);
-  const ref = useRef();
   const  handleSearch = () =>{
     setShow(!show);
   }
@@ -17,7 +16,7 @@ const Header = () => {
               <span className='hidden md:block text-base md:text-2xl font-bold'>Google Keep</span>
             </div>
            <div className='w-full md:w-[60%] flex flex-row justify-evenly items-center'>
-              <input type="text" placeholder='Search' className={`${show ? 'md:block border-none outline-slate-300 absolute left-0  rounded-none shadow p-3 w-full' : 'hidden'}` }
+              <input type="text" placeholder='Search' className={`${show ? 'md:block border-2 outline-slate-300 absolute left-0  rounded-none shadow p-3 w-full' : 'hidden'}` }
               />
               <AiOutlineSearch size={24} className='inline absolute right-5 cursor-pointer'
               onClick={()=>handleSearch()}/>
