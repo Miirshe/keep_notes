@@ -1,8 +1,9 @@
+import Notes from "../components/notes/Notes"
 
-const Home = () => {
+const Home = ({inputSearch}) => {
   return (
     <>
-
+    <Notes inputSearch = { inputSearch }/>
     </>
   )
 }

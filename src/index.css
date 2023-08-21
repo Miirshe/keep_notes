@@ -6,3 +6,12 @@
         @apply font-serif
     }
 }
+
+@layer components {
+    .fields {
+        @apply p-3 rounded-md w-full shadow-md
+    }
+    .btn {
+        @apply p-3 rounded-md w-full shadow-md bg-[#FBBC04] text-white
+    }
+}
