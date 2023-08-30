@@ -62,10 +62,10 @@ const Note = ({ note, notes }) => {
   return (
     user?.uid &&
     note?.userId === user?.uid && (
-      <div className="flex flex-col justify-start items-start cursor-pointer gap-2 space-y-2 transition-all ease-in-out hover:shadow-md rounded-md p-1 overflow-hidden">
+      <div className="flex flex-col h-fit justify-start items-start cursor-pointer gap-2 space-y-2 transition-all ease-in-out hover:shadow-md rounded-md p-1 overflow-hidden">
         {checkImage ? (
           <img
-            className="w-full md:h-60 bg-center object-cover "
+            className="w-full md:h-40 bg-center object-cover "
             src={note?.avator?.avator}
             alt=""
           />

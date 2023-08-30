@@ -115,7 +115,7 @@ const Lists = () => {
                 <p
                   className={` ${
                     todo?.id === check && done ? "line-through" : ""
-                  }  md:w-[80%] cursor-pointer text-justify md:text-left text-base`}
+                  }  md:w-[80%] cursor-pointer text-justify md:text-left text-xl`}
                 >
                   {todo?.list}
                 </p>
