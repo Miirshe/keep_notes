@@ -37,8 +37,13 @@ const Completed = () => {
 			console.log(error);
 		}
 	}
+
+	const checkCompleted = complete?.filter((res) => {
+		return res?.userId == user?.uid
+	});
   return (
 	<div className='w-full mt-10'>
+			<h1 className='text-2xl uppercase ml-5 md:ml-0 text-[#000] mt-4'>All complete Tasks <span className='text-[#FBBC04]'>({checkCompleted?.length})</span></h1>
 			<div className=' mt-10 flex flex-col justify-start items-start gap-5'>
 		{
 		complete?.map( res => {
@@ -46,7 +51,6 @@ const Completed = () => {
 				return(
 					user?.uid && res?.userId === user?.uid && (
 						<>
-						<h1 className='text-2xl uppercase ml-5 md:ml-0 text-[#000] mt-4'>All complete Tasks <span className='text-[#FBBC04]'>({complete?.length})</span></h1>
 						<div key={res?.id} className=' relative mx-auto md:m-0 p-5 w-[90%] border-b-2 border-slate-300 hover:shadow-xl transition-all ease-in-out hover:rounded'>
 							<p className='w-[90%] line-through'>{res?.completed}</p>
 							<TiDelete onClick={()=>handleDelete(res?.id)} size={30} className='inline absolute right-2 bottom-2  cursor-pointer text-red-500'/>
