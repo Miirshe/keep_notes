@@ -111,7 +111,7 @@ const Posts = () => {
         <input className='w-full p-3 rounded cursor-pointer hidden' type="file" name="" id="upload" onChange={(e)=>setFile(e.target.files[0])}/>
         <label htmlFor="upload" id='upload' className=' absolute top-5 right-4 md:right-10'><BiSolidImageAdd size={30} className='inline text-xl font-bold cursor-pointer'/></label>
         <ReactQuill className='w-full h-72 ' theme="snow" value={value} onChange={setValue} />
-        <button type='submit' className='w-full capitalize bg-[#FBBC04] p-3 rounded mt-10' disabled={progress !== null && progress > 100 }> submit </button>
+        <button type='submit' className='w-full capitalize bg-[#FBBC04] p-3 rounded mt-20' disabled={progress !== null && progress > 100 }> submit </button>
       </form>
 
     </div>

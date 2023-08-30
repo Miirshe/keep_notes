@@ -34,7 +34,7 @@ const Notes = ({ inputSearch }) => {
           notes?.filter(note => {
             return note.Note.toLowerCase().includes(inputSearch.toLowerCase())
           }).map(note => {
-            return <Note key={note.id} note={note}/>
+            return <Note key={note.id} note={note} notes={notes}/>
           })
         }
 

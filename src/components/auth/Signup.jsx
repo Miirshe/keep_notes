@@ -6,8 +6,10 @@ import { auth, storage } from "../lib/Firebase"
 import { useEffect, useState } from "react"
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { toast } from "react-toastify"
+import { BiHide, BiShow } from "react-icons/bi"
 
 const Signup = () => {
+	const [type , setType] = useState('password');
 	const navigate = useNavigate();
 	const initialValues = {
 		username : '',
@@ -53,7 +55,11 @@ const Signup = () => {
 	const validationSchema = Yup.object({
 		username : '',
 		email : Yup.string().required("Please enter a valid email"),
-		password : Yup.string().required("Please enter a valid password"),
+		password : Yup.string().required("Please enter a valid password")
+		.matches(/[a-z]/,'password at least one small letter is required')
+		.matches(/[A-Z]/,'password at least one capital letter is required')
+		.matches(/[0-9]/,'password at least one Number is required')
+		.min(8,'password must be less than 8 characters')
 	})
 	const handleSubmit = async ( values , { resetForm }) => {
 		try {
@@ -88,10 +94,13 @@ const Signup = () => {
 					<ErrorMessage className="text-red-500" component="div" name="username"/>
 					<Field type="email" className="fields" placeholder="Enter your email" name="email"/>
 					<ErrorMessage className="text-red-500" component="div" name="email"/>
-					<div className="w-full space-y-4">
-					<Field type="password" className="fields" placeholder="Enter your email" name="password"/>
-					<ErrorMessage className="text-red-500" component="div" name="password"/>
-					</div>
+					<div className="w-full relative space-y-2">
+                    <Field type={type} className="fields" placeholder="Enter your password.." name="password"/>
+                    {
+                      type === 'password' ? <BiHide onClick={()=>setType('text')} size={25} className="text-black cursor-pointer inline absolute top-2 right-4" /> : <BiShow  onClick={()=>setType('password')} size={25} className="inline cursor-pointer text-black  absolute top-2 right-4"/>
+                    }
+                    <ErrorMessage component="div" className="text-red-500" name="password"/>
+                    </div>
 					<input type="file" onChange={(e)=>setFile(e.target.files[0])} />
 					<button className="btn" type="submit" disabled={progress !=null && progress > 100}>Signup</button>
 					<p>Already have an account <Link className="text-xl tracking-widest p-1 uppercase underline" to="/Login">Signin</Link></p>

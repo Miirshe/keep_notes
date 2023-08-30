@@ -5,10 +5,11 @@ import * as Yup from 'yup'
 import { auth } from "../lib/Firebase"
 import Cookies from "js-cookie"
 import { useEffect, useState } from "react"
+import { BiHide, BiShow } from "react-icons/bi"
 const Login = () => {
 
 	const navigate = useNavigate();
-
+	const [type , setType] = useState('password');
 	const [ users , setUsers ] = useState([]);
 
 	useEffect(()=>{
@@ -60,10 +61,13 @@ const Login = () => {
 					<h1 className="text-xl tracking-widest p-1 uppercase ">Login</h1>
 					<Field type="email" className="fields" placeholder="Enter your email" name="email"/>
 					<ErrorMessage className="text-red-500" component="div" name="email"/>
-					<div className="w-full space-y-4">
-					<Field type="password" className="fields" placeholder="Enter your email" name="password"/>
-					<ErrorMessage className="text-red-500" component="div" name="password"/>
-					</div>
+					<div className="w-full relative space-y-2">
+                    <Field type={type} className="fields" placeholder="Enter your password.." name="password"/>
+                    {
+                      type === 'password' ? <BiHide onClick={()=>setType('text')} size={25} className="text-black cursor-pointer inline absolute top-2 right-4" /> : <BiShow  onClick={()=>setType('password')} size={25} className="inline cursor-pointer text-black  absolute top-2 right-4"/>
+                    }
+                    <ErrorMessage component="div" className="text-red-500" name="password"/>
+                    </div>
 					<button className="btn" type="submit">Login</button>
 					<p>Have to register <Link className="text-xl tracking-widest p-1 uppercase underline" to="/Signup">Signup</Link></p>
 				</Form>

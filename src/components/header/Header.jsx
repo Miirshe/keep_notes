@@ -55,7 +55,7 @@ const Header = ({showMenu , setShowMenu , hideMenu , setInputSearch }) => {
            <div className='w-full md:w-[80%] relative overflow-hidden flex flex-row justify-between gap-3 items-center'>
             <div className='flex flex-row justify-evenly items-center gap-5'>
               <img src={logo} alt="" className=' w-8 rounded' />
-              <span className='hidden md:block text-base md:text-2xl font-bold'>Google Keep</span>
+              <span className='hidden md:block text-base md:text-2xl font-bold italic'>K~Note</span>
             </div>
            {
               auths ? <div className='w-full md:w-[60%] flex flex-row justify-evenly items-center'>
@@ -78,7 +78,7 @@ const Header = ({showMenu , setShowMenu , hideMenu , setInputSearch }) => {
               auths ? 
               <div className='flex flex-row justify-evenly items-center gap-2 w-[20%] relative'>
                     <p className='text-xl tracking-widest hidden md:block'>Hi, {user?.displayName}</p>
-                    <img className=' rounded w-16 hidden md:block' src={avator} alt="" />
+                    <img className=' rounded w-16 hidden md:block' src={user?.photoURL} alt="" />
                       {
                       showMenu ?<AiOutlineMenu size={25} className='cursor-pointer block absolute right-0  md:hidden' onClick={()=>setShowMenu(!showMenu)}/>  :
                       <AiOutlineClose size={25} className=' cursor-pointer block absolute right-0 md:hidden' onClick={()=>setShowMenu(!showMenu)}/>
